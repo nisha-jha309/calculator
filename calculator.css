@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "poppins", sans-serif;
+}
+
+#calculator {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#calculator.resized {
+    width: 500px;
+    height: 500px;
+    border-radius: 18px;
+    transition: all 0.3s ease;
+    margin: auto;
+}
+
+#result {
+    border-bottom: 5px solid black;
+    background-color: #fef6e4;
+    width: 100%;
+    height: 20%;
+    color: black;
+    text-align: right;
+    place-content: center;
+    font-size: 48px;
+    padding: 20px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#result::-webkit-scrollbar {
+    display: none;
+}
+
+#operation-section {
+    background-color: #fef6e4;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+#operations {
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+}
+
+#operations i {
+    font-size: 24px;
+    color: #f94144;
+}
+
+#operations>div:nth-child(1) {
+    display: flex;
+    gap: 30px;
+}
+
+#operators {
+    margin-top: 20px;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.operator {
+    text-align: center;
+    place-content: center;
+    background-color: #f9dcc4;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: inset 2px 2px 4px rgba(8, 8, 8, 0.959);
+
+}
+
+.main {
+    background-color: rgba(252, 163, 131, 0.849);
+    box-shadow: inset 2px 2px 4px rgba(8, 8, 8, 0.959);
+
+}
+
+.arithemetic {
+    background-color: #ff6b6b;
+    box-shadow: inset 2px 2px 4px rgba(8, 8, 8, 0.959);
+
+}
+
+.equal {
+    background-color: #88cc88;
+    box-shadow: inset 2px 2px 4px rgba(8, 8, 8, 0.959);
+}

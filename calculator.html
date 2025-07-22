@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="calculator">
+    <div id="result"></div>
+    <div id="operation-section">
+        <div id="operations">
+            <div>
+<i class="fa-solid fa-clock-rotate-left" id="history"></i>
+                <i class="fa-solid fa-down-left-and-up-right-to-center" id="resize"></i>
+            </div>
+            <div>
+                <i class="fa-regular fa-rectangle-xmark" id="clear"></i>
+            </div>
+        </div>
+        <div id="operators">
+        <div class="operator main">C</div>
+        <div class="operator main">+/-</div>
+        <div class="operator main">%</div>
+        <div class="operator arithemetic">/</div>
+        <div class="operator">7</div>
+        <div class="operator">8</div>
+        <div class="operator">9</div>
+        <div class="operator arithemetic">x</div>
+        <div class="operator">4</div>
+        <div class="operator">5</div>
+        <div class="operator">6</div>
+        <div class="operator arithemetic">-</div>
+        <div class="operator">1</div>
+        <div class="operator">2</div>
+        <div class="operator">3</div>
+        <div class="operator arithemetic">+</div>
+        <div class="operator" id="sqrt"><i class="fa-solid fa-square-root-variable "></i></div>
+        <div class="operator">0</div>
+        <div class="operator">.</div>
+        <div class="operator equal">=</div>
+    </div>
+    </div>
+    </div>
+    <script>
+        let body=document.body;
+        let calculator=document.getElementById("calculator");
+        let result=document.getElementById("result");
+        const operator=document.querySelectorAll(".operator");
+        const historyBtn=document.getElementById("history");
+        const resizeBtn=document.getElementById("resize");
+        const clearBtn=document.getElementById("clear");
+        let sqrt=document.getElementById("sqrt");
+
+        operator.forEach(op => {
+                    let value=op.textContent.trim();
+            op.addEventListener("click",()=>{
+                if (value === "C") {
+                result.textContent = "";
+            } else if (value === "=") {
+                if( result.textContent.startsWith("√")){
+                    result.textContent=Math.sqrt(result.textContent.slice(1));
+                }
+                try {
+                    result.textContent = eval(
+                        result.textContent.replace("x", "*").replace("÷", "/")
+                    );
+                } catch {
+                    result.textContent = "Error";
+                }
+            }else if(value==="+/-"){
+                if(result.textContent>0){
+                    result.textContent="(-"+result.textContent+")"
+                }
+            }
+            else {
+                result.textContent += value;
+            }
+            })
+        });
+       clearBtn.addEventListener("click",()=>{
+        result.textContent = result.textContent.slice(0,-1);
+       })
+
+resizeBtn.addEventListener("click",()=>{
+    calculator.classList.toggle("resized");
+    if(calculator.classList.contains("resized")){
+        body.style.display="flex";
+        body.style.alignItems=center;
+    }
+});
+
+sqrt.addEventListener("click",()=>{
+    result.textContent="√"+result.textContent;
+})
+
+    </script>
+</body>
+
+</html>
